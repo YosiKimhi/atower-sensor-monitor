@@ -1,0 +1,28 @@
+.reading {
+    padding: 12px;
+    border-radius: 4px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Prevent wrapping */
+    white-space: nowrap;
+    min-width: 150px;
+}
+
+.recent {
+    background: #e6f7ff;
+    border: 1px solid #91d5ff;
+}
+
+.face {
+    display: block;
+    text-transform: capitalize;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.temperature {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+}

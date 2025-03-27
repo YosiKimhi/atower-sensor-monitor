@@ -2,7 +2,6 @@
     padding: 20px;
     background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .title {
@@ -11,29 +10,53 @@
     font-size: 1.5rem;
 }
 
+.hourGroup {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f5f5f5;
+    overflow-x: auto;
+}
+
+.hourHeader {
+    margin: 0 0 10px 0;
+    color: #666;
+    font-size: 1.1rem;
+}
+
 .reportGrid {
     display: grid;
-    gap: 16px;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    min-width: min-content;
 }
 
 .reading {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
     padding: 12px;
-    background: #f8f9fa;
     border-radius: 4px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    min-width: 150px;
+}
+
+.recent {
+    background: #e6f7ff;
+    border: 1px solid #91d5ff;
 }
 
 .face {
-    font-weight: 500;
+    display: block;
     text-transform: capitalize;
+    color: #666;
+    margin-bottom: 4px;
 }
 
 .temperature {
-    text-align: center;
-    color: #2c5282;
-    font-weight: 600;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
 }
 
 .timestamp {
