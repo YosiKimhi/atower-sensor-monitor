@@ -74,37 +74,20 @@ class SensorProcessingService {
                 }
             });
     
-            if (readings.length < 2) return;
-    
-            // First pass: identify malfunctioning sensors
-            const initialAvg = readings.reduce((sum, r) => sum + r.temperature, 0) / readings.length;
-            const malfunctioningSensors = new Set();
-    
-            readings.forEach(sensor => {
-                const deviation = Math.abs(sensor.temperature - initialAvg) / initialAvg;
-                if (deviation > 0.2) {
-                    malfunctioningSensors.add(sensor.id);
-                }
-            });
-    
-            // Calculate final average using only normal sensors
-            const normalReadings = readings.filter(sensor => !malfunctioningSensors.has(sensor.id));
+            // Calculate average temperature from all readings
+            const avgTemp = readings.reduce((sum, r) => sum + r.temperature, 0) / readings.length;
             
-            if (normalReadings.length >= 2) {
-                const normalAvg = normalReadings.reduce((sum, r) => sum + r.temperature, 0) / normalReadings.length;
-                
-                // Update the hourly aggregate with the normal sensors average
-                await HourlyAggregate.updateOne(
-                    { 
-                        timestamp: hourStart,
-                        face: reading.face
-                    },
-                    {
-                        $set: { averageTemperature: normalAvg }
-                    },
-                    { upsert: true }
-                );
-            }
+            // Update the hourly aggregate
+            await HourlyAggregate.updateOne(
+                { 
+                    timestamp: hourStart,
+                    face: reading.face
+                },
+                {
+                    $set: { averageTemperature: avgTemp }
+                },
+                { upsert: true }
+            );
         } catch (error) {
             logger.error('Error updating hourly aggregate:', error);
             throw error;

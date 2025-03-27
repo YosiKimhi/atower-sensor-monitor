@@ -5,8 +5,11 @@ const logger = require('../utils/logger');
 class ReportController {
     async getWeeklyReport(req, res) {
         try {
-            const now = Math.floor(Date.now() / 1000); // Current unix timestamp
+            const now = Math.floor(Date.now() / 1000);
             const weekAgo = now - (7 * 24 * 60 * 60);
+            
+            // Add debug logging
+            logger.info(`Fetching weekly report from ${new Date(weekAgo * 1000)} to ${new Date(now * 1000)}`);
             
             const aggregates = await HourlyAggregate.find({
                 timestamp: { 
@@ -16,6 +19,12 @@ class ReportController {
             })
             .sort({ timestamp: -1, face: 1 })
             .select('-__v');
+
+            // Add more debug logging
+            logger.info(`Found ${aggregates.length} aggregates`);
+            if (aggregates.length > 0) {
+                logger.info(`Sample aggregate: ${JSON.stringify(aggregates[0])}`);
+            }
 
             const report = {
                 startDate: new Date(weekAgo * 1000).toISOString(),
