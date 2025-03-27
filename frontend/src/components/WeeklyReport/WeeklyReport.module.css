@@ -1,0 +1,48 @@
+.container {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    margin: 0 0 20px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.reportGrid {
+    display: grid;
+    gap: 16px;
+}
+
+.reading {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.face {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.temperature {
+    text-align: center;
+    color: #2c5282;
+    font-weight: 600;
+}
+
+.timestamp {
+    text-align: right;
+    color: #666;
+}
+
+.noData {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}

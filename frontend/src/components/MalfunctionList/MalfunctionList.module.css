@@ -1,0 +1,64 @@
+.container {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+.title {
+    margin: 0 0 20px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.list {
+    display: grid;
+    gap: 16px;
+}
+
+.sensor {
+    padding: 16px;
+    background: #fff1f0;
+    border: 1px solid #ffccc7;
+    border-radius: 4px;
+}
+
+.sensorHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.sensorId {
+    font-weight: 600;
+    color: #cf1322;
+}
+
+.face {
+    text-transform: capitalize;
+    color: #666;
+}
+
+.sensorData {
+    display: grid;
+    gap: 8px;
+}
+
+.dataItem {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+}
+
+.deviation {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #ffccc7;
+    color: #cf1322;
+    font-weight: 500;
+}
+
+.noData {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
