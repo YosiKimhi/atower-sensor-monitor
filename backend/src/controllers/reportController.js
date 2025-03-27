@@ -62,18 +62,14 @@ class ReportController {
                     }
                 ]);
 
-                // Debug log
-                console.log('Latest readings for face', face, ':', latestReadings);
 
                 if (latestReadings.length < 2) continue;
 
                 // Get normal sensors average
                 const normalSensors = latestReadings.filter(r => r.status === 'normal');
-                console.log('Normal sensors:', normalSensors);
 
                 if (normalSensors.length >= 2) {
                     const normalAvg = normalSensors.reduce((sum, r) => sum + r.temperature, 0) / normalSensors.length;
-                    console.log('Normal average:', normalAvg);
 
                     // Get malfunctioning sensors
                     const malfunctioning = latestReadings.filter(r => r.status === 'malfunctioning');
